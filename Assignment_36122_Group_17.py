@@ -253,7 +253,7 @@ class NewsScraper:
 
         # Output frame 
         self.output_frame = tk.LabelFrame(master, text="Extracted News Stories", padx=10, pady=10)
-        self.output_frame.place(x=250, y=10, width=1220, height=480) 
+        self.output_frame.place(x=250, y=10, width=1220, height=400) 
         self.output_textbox = tk.Text(self.output_frame, wrap="word")
         self.output_textbox.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
         self.output_scrollbar = tk.Scrollbar(self.output_frame, command=self.output_textbox.yview)
