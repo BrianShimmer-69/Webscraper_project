@@ -1,3 +1,16 @@
+################################################################################
+#                                                                              #  
+#                                  Unittests                                   #                                     
+#                                                                              #  
+#  36122 Python Programming - 1st Semester 2025                                #
+#                                                                              #  
+#  Dan Hansen                    - Student ID 24718999                         #  
+#  Brian Shimmer Bino Deva Kumar - Student ID ????????                         #  
+#  David Pawley                  - Student ID ????????                         #  
+#  Maximus Chandrasekaran        - Student ID 25614189                         #  
+#                                                                              #  
+################################################################################
+
 import unittest
 from Assignment_36122_Group_17 import NewsScraper
 import tkinter as tk
