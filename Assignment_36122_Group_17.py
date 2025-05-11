@@ -7,7 +7,7 @@
 #  Dan Hansen                    - Student ID 24718999                         #  
 #  Brian Shimmer Bino Deva Kumar - Student ID ????????                         #  
 #  David Pawley                  - Student ID ????????                         #  
-#  Maximus Chandrasekaran        - Student ID ????????                         #  
+#  Maximus Chandrasekaran        - Student ID 25614189                         #  
 #                                                                              #  
 ################################################################################
 
@@ -139,7 +139,6 @@ class NewsScraper:
         self.api_key = api_keys.get_key()
         if self.api_key == 'Invalid': 
             messagebox.showwarning("Warning",'No valid keys ...')
-            # print('No valid keys ...')
             self.master.destroy()
             sys.exit()
 
@@ -465,9 +464,7 @@ class NewsScraper:
             labeltext += " and {perc:.1f}% of the articles were sourced from the ABC News scrape".format(perc=(1-api_ratio)*100)               
 
         date_list = pd.to_datetime(self.df_articles['PublishedDate'], format='%d %b %Y %I:%M %p').tolist()
-        print(date_list)
         min_date, max_date = self.get_date_info(date_list)
-        print(min_date, max_date)
         if min_date is None or max_date is None:
             pass
         elif min_date == max_date:
@@ -504,7 +501,6 @@ class NewsScraper:
             filtered_words = [word for word in words if word not in unwanted]
             all_words.extend(filtered_words)
 
-        print(all_words)
         word_counts = Counter(all_words)
         if not word_counts:
             self.plot.clear()
@@ -527,6 +523,18 @@ class NewsScraper:
         """
         Performs a scrape of the News API website based on the selected paramters and stores the data in a dataframe.
         """
+
+        if not self.df_articles.empty:
+            has_api_articles = not self.df_articles[self.df_articles['ExtractionMethod'] == 'API'].empty
+            if has_api_articles:
+                # Clear API articles
+                self.df_articles = self.df_articles[self.df_articles['ExtractionMethod'] != 'API']
+                self.API_label.config(text="API news articles cleared.")
+                self.API_button.config(text="Get API News")
+                self.update_info_label()
+                self.fill_textbox()
+                self.update_plots()
+                return
 
         url = self.url.replace('/sources','')
         if self.answer.get() == "0":  # Source selected
@@ -608,7 +616,9 @@ class NewsScraper:
                 msg = f"No {category} news from {country}"
             else:
                 msg = f"There were {found} {category} articles from {country} added"
+
         self.API_label.config(text=msg)
+        self.API_button.config(text="Clear API News")
         self.update_info_label()
         self.fill_textbox() 
         self.update_plots()
@@ -617,7 +627,19 @@ class NewsScraper:
         """
         Performs a scrape of the ABC Australia news website and stores the data in a dataframe.
         """
-        
+        if not self.df_articles.empty:
+            has_abc_articles = not self.df_articles[self.df_articles['ExtractionMethod'] == 'ABC Scrape'].empty
+
+            if has_abc_articles:
+                # Clear ABC Scrape articles
+                self.df_articles = self.df_articles[self.df_articles['ExtractionMethod'] != 'ABC Scrape']
+                self.ABC_label.config(text="ABC Australia articles cleared.")
+                self.ABC_button.config(text="Get ABC Australia News")
+                self.fill_textbox()
+                self.update_plots()
+                self.update_info_label()
+                return
+
         try:
             web = req.get('https://www.abc.net.au/news')
             soup = BeautifulSoup(web.text, 'lxml')
@@ -679,10 +701,11 @@ class NewsScraper:
                 msg = f"There were {found} articles from ABC Australia added"
 
             self.ABC_label.config(text=msg)
+            self.ABC_button.config(text="Clear ABC Australia News")
             self.fill_textbox()        
             self.update_plots()
             self.update_info_label()
-
+            
         except Exception as e:
             messagebox.showwarning("Warning", f"Error fetching ABC news: {e}")
             self.ABC_label.config(text="Error fetching ABC Australia news")
