@@ -5,8 +5,8 @@
 #  36122 Python Programming - 1st Semester 2025                                #
 #                                                                              #  
 #  Dan Hansen                    - Student ID 24718999                         #  
-#  Brian Shimmer Bino Deva Kumar - Student ID ????????                         #  
-#  David Pawley                  - Student ID ????????                         #  
+#  Brian Shimmer Bino Deva Kumar - Student ID 25752306                         #  
+#  David Pawley                  - Student ID 92072368                         #  
 #  Maximus Chandrasekaran        - Student ID 25614189                         #  
 #                                                                              #  
 ################################################################################
@@ -129,8 +129,11 @@ class NewsScraper:
         api_keys = NewsAPI_KeyList()
         api_keys.set_url(self.url)
         try:
-            api_keys.add_key('513d1d7c31e34a49aeedadeccd4f58e5')     # dan.v.hansen@student.uts.edu.au
-            api_keys.add_key('65239d2b12b548b99319b46acd217ae9')     # danhansen2512@gmail.com
+            # api_keys.add_key('513d1d7c31e34a49aeedadeccd4f58e5')     
+            # api_keys.add_key('65239d2b12b548b99319b46acd217ae9')     
+            # api_keys.add_key('fbe85cf88f68401ca9d651c0f9001e25')     
+            # api_keys.add_key('cdcb845692684e7196b78ec4262edca2')     
+            api_keys.add_key('4183db2e20db4b18bb05e23f5bf7c548')     
         except Exception as e:
             messagebox.showwarning("Warning", str(e))
             self.master.destroy()
@@ -618,7 +621,11 @@ class NewsScraper:
                 msg = f"There were {found} {category} articles from {country} added"
 
         self.API_label.config(text=msg)
-        self.API_button.config(text="Clear API News")
+        buttontext = "Get API News"
+        if not self.df_articles.empty:
+            if not self.df_articles[self.df_articles['ExtractionMethod'] == 'API'].empty:
+                buttontext = "Clear API News"
+        self.API_button.config(text=buttontext)
         self.update_info_label()
         self.fill_textbox() 
         self.update_plots()
