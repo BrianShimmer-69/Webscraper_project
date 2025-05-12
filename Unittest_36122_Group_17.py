@@ -5,8 +5,8 @@
 #  36122 Python Programming - 1st Semester 2025                                #
 #                                                                              #  
 #  Dan Hansen                    - Student ID 24718999                         #  
-#  Brian Shimmer Bino Deva Kumar - Student ID ????????                         #  
-#  David Pawley                  - Student ID ????????                         #  
+#  Brian Shimmer Bino Deva Kumar - Student ID 25752306                         #  
+#  David Pawley                  - Student ID 92072368                         #  
 #  Maximus Chandrasekaran        - Student ID 25614189                         #  
 #                                                                              #  
 ################################################################################
