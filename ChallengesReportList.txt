@@ -1,3 +1,5 @@
-Additional features
+Additional features not part of the requirements
 	The Omitted Words from the graphical display
 	The listboxes which provide the user with every available option for the Source or Category/Country
+
+One of the problems I had during development was the NewsAPI key kept hitting it's daily limit, this was countered using several keys from all my email addreses.  
