@@ -1,0 +1,3 @@
+Additional features
+	The Omitted Words from the graphical display
+	The listboxes which provide the user with every available option for the Source or Category/Country
