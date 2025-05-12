@@ -129,10 +129,10 @@ class NewsScraper:
         api_keys = NewsAPI_KeyList()
         api_keys.set_url(self.url)
         try:
-            # api_keys.add_key('513d1d7c31e34a49aeedadeccd4f58e5')     
-            # api_keys.add_key('65239d2b12b548b99319b46acd217ae9')     
-            # api_keys.add_key('fbe85cf88f68401ca9d651c0f9001e25')     
-            # api_keys.add_key('cdcb845692684e7196b78ec4262edca2')     
+            api_keys.add_key('513d1d7c31e34a49aeedadeccd4f58e5')     
+            api_keys.add_key('65239d2b12b548b99319b46acd217ae9')     
+            api_keys.add_key('fbe85cf88f68401ca9d651c0f9001e25')     
+            api_keys.add_key('cdcb845692684e7196b78ec4262edca2')     
             api_keys.add_key('4183db2e20db4b18bb05e23f5bf7c548')     
         except Exception as e:
             messagebox.showwarning("Warning", str(e))
