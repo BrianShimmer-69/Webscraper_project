@@ -1,10 +1,10 @@
 Hello!
 
-My name’s Dan, 
-and my name is Brian, 
-and my name is David ,
+[Dan] My name’s Dan, 
+[Brian] and my name is Brian, 
+and my name is David,
 and my name is Max, 
-and in this video, I’ll be walking you through our Python Information Aggregator assignment.
+and in this video, we’ll be walking you through our Python Information Aggregator assignment.
 
 This project is all about building a flexible Python application that can fetch, combine, and display news data using both a public API extraction and html web scraping. What makes it interesting isn’t just the data but how we built it. This tool was developed using object-oriented programming principles, and it features a graphical user interface to make it easier and more engaging to use.
 
