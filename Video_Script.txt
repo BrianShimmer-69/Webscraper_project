@@ -1,101 +1,100 @@
+[1. Introduction 0:00 – 0:30]
+
 [Dan] Hello!  My name’s Dan, 
-[Brian] and my name is Brian, 
 [David] and my name is David,
-[Max] and my name is Max, 
+[Brian] and my name is Brian, 
 
-[Dan] and in this video, we’ll be walking you through our Python Information Aggregator assignment.
+[Max] 
+and my name is Max, 
 
-[Brian] This project is all about building a flexible Python application that can fetch, combine, 
+Welcome to our video presentation for the Python Information Aggregator project. 
+
+In this assignment, we developed a Python application that collects, combines, 
+and displays news data using both a public Web API and HTML web scraping techniques. 
+
+I'll let David walk you through what we built.
+
+
+[David]
+[2. Objective Overview 0:30 – 1:30]
+
+This project is all about building a flexible Python application that can fetch, combine, 
 and display news data using both a public API extraction and html web scraping. What makes it interesting
 isn’t just the data but how we built it. This tool was developed using object-oriented programming principles, 
 and it features a graphical user interface to make it easier and more engaging to use.
 
-[David] Now, some parts of the code may not be the most elegant or minimal. But that’s by design. The 
+Now, some parts of the code may not be the most elegant or minimal. But that’s by design. The 
 assignment asks us to incorporate encapsulation, inheritance, and polymorphism, so instead of coding 
 the shortest and most efficient solution, we focused on clear design that demonstrates these concepts in action.
 
-[Max] Let’s begin by looking at the design.
+Over to Brian to talk about the key components.
 
-At the core of our app is the KeyList class. This class manages a list of 32-character API keys. 
-It’s simple but functional, with a method to return a key at random when needed.
+[Brian]
+[3. Key Components [1:30 – 3:00]
 
-Then, we extend that with the NewsAPI_KeyList subclass. This is where things get interesting. It overrides
-the get_key method to randomly select a key, check this key’s validity with the NewsAPI site before returning it. 
-If the tested key is not valid it will select another key. So here we demonstrate both inheritance and polymorphism 
-in a clean and functional way.
+[API Integration:]
 
-[Dan] Now, moving on to testing. Some functions in this application are intentionally simple. Why is this? 
-Because testing graphical user interface functions which use tkinter, and functions which perform API class 
-or web scraping can be challenging. So, we started by writing clean, modular functions that could be 
-unit tested easily. This helped us verify unit testing functionality before proceeding to more 
-complicated GUI and external system testing.
+We used the NewsAPI to access structured news articles in JSON format. Users can filter by category, 
+country, or news source. This flexibility makes the tool adaptable to a wide range of interests.
 
-[Brian] As for the information sources, the application pulls news from two locations. First is the NewsAPI, 
-which returns structured JSON data. The second is a direct web scrape of the ABC News Australia website. 
-We chose the ABC website because it’s not behind a paywall, making it ideal for ethical and consistent scraping.
+[Web Scraping:]
 
-[David] Our team also implemented unit tests on various components to ensure robustness. These include data 
-validation, key handling, and article formatting. It was all about making sure the code could handle real-world usage.
-We used several external libraries too. Like pycountry, which helps with country and language lookups, pandas is great 
-for managing our dataset of articles, BeautifulSoup is used for HTML parsing, 
-and matplotlib handles the visualization side of things.
+We also implemented scraping of the ABC News Australia website using BeautifulSoup. This enriched our 
+dataset with headlines that aren’t available via API and demonstrated 
+how to ethically extract real-time public data.
 
-[Max ]So, let’s get to the fun bit, the graphical user interface.
+[OOP Principles in Action:]
 
-When you first launch the application, it automatically fetches a valid API key and then retrieves the latest 
-list of news sources, categories, and countries from the NewsAPI. These are then displayed in listboxes for 
-the user to choose from.
+Our core architecture relies on object-oriented programming. The KeyList class manages API keys, 
+and a NewsAPI_KeyList subclass adds functionality like validity checking. This design showcases 
+encapsulation, inheritance, and polymorphism in action.
 
-[Dan] Now, the main window is divided into several parts:
+[Unit Testing:]
 
-On the top right, we have an API option selector using radio buttons. The user can choose to search by either 
-news source or a combination of category and country.
+Testing was a key part of our process. We wrote unit tests using the unittest framework to 
+validate individual components — such as key management and data formatting — before moving 
+on to more complex integrations like the GUI and network calls.
 
-[Brian] Below that, there are buttons to fetch or clear news articles via the NewsAPI or via ABC News scraping.
-To the top right, there’s an “Extracted News Stories” display panel, which shows each article's title, source, 
-date, author (if available), description, extraction method, and a URL, which can be copied and pasted into a browser.
+[GUI Interaction:]
 
-[David] On the bottom right, we’ve got a keyword frequency graph that shows the 20 most common words from the article titles.
+Our user interface was built using Tkinter. It allows users to select API parameters, fetch news, 
+and view the results in an intuitive panel. Keyword frequency graphs are automatically generated 
+using Matplotlib, giving a visual summary of the dataset.
 
-A few usability features worth mentioning:	
+[Optional Features and Visualizations:]
 
-When you select a category and a country, for example “Technology” and “United States,” and click “Get API News,” the articles a
-re pulled from NewsAPI and shown in the “Extracted News Stories” panel. The “Common Title Words” plot is also generated.
+We added features like word exclusion filters for the graph, independent clearing of API vs scraped articles, 
+and a summary panel that tracks source counts and publication date ranges.
 
-The button will then toggle to a “Clear API News”, which, when clicked, either clears the articles dataset or 
-removes only the NewsAPI articles, leaving any scraped ABC articles untouched.
+Now Dan will finish up and tell you about the Submission Requirements.
 
-[Max] Similarly, the “Get ABC News” button scrapes the ABC News homepage and either creates a new dataset or 
-adds the articles to the current dataset. These can also be removed independently with the “Clear ABC News” button.
+[Dan]
+[4. Submission Requirements 3:00 – 4:30]
 
-The information summary panel tells the user how many total articles are in the dataset, which source 
-contributed the most, and shows the publication date range.
+To meet the assignment criteria, we included:
 
-And the omitted words text box? That lets you exclude common English words from the keyword graph. 
-Words like “the,” “and,” “is,” etc. You can add more unwanted words to this list and click “Replot” 
-to update the graph dynamically. It’s simple and effective.
+A fully object-oriented Python codebase
 
-[Dan] Now, from an assessment perspective, we were required to:
+Unit tests for key components using unittest
 
-Provide an object-oriented Python codebase;
+A README file listing required libraries and setup instructions
 
-Include unit tests;
+A Tkinter-based GUI with screenshots
 
-Submit a README with required libraries and usage instructions;
+And a short design report covering architecture, design challenges, and extra features like scraping and visualization.
 
-And write a short report on our design, challenges, and any bonus features.
+This video presentation is part of those submission deliverables.
 
-And this Video.
+[5. Important Notes and Conclusion 4:30 – 5:00]
 
-[Brian] One thing we were very mindful of is ethical scraping. When scraping data, always follow the site’s terms 
-and conditions, avoid overloading servers. You must never collect sensitive or personal information, and always credit your sources. 
+One final note — ethical scraping is critical. We made sure to respect the terms of service of the ABC News site, 
+avoided excessive requests, and didn’t collect sensitive or personal data. As you should always ensure scraping 
+practices are legal, minimal, and respectful of content owners.
 
-In our case, both sources allow basic public scraping for headlines, which made it a suitable choice.
-And that wraps up our tour of the Python Information Aggregator project!
+[6. Closing and Call to Action 5:00 – 5:30]
 
-Thanks so much for watching. I hope this has given you a clear picture of the design and functionality behind the application. 
-If you’ve got any questions or want to dive deeper into a particular part of the project, feel free to reach out via 
-email or the subject discussion board. I’ll be happy to help.
+Thank you for watching our walkthrough of the Python Information Aggregator!
 
-Until next time
+We hope it gave you a clear picture of how we approached this assignment.
 
+Until next time!
